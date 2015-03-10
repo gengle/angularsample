@@ -1,30 +1,32 @@
 ﻿@{
     PageData["title"] = "AngularJS SPA Template for Visual Studio";
 }
-    <div ng-controller="RootCtrl">
-        <div>Operator is: {{option}}</div>
-    </div>
 
-    <div ng-controller="OptionsCtrl">
-        <div>Operator is: {{option}}</div>
-        <select  ng-model="option">
-            <option ng-repeat="option in options" value="{{option.name}}">
-                {{option.name}}
-            </option>
-        </select>
-    </div>
-        
-
-
-    @*<select ng-model="options" >
-        <option>Test1</option>
-        <option>Test2</option>
-        <option>Test3</option>
-    </select>*@
-    
-    <h1>You selected {{ options.selectedOption }}</h1>
-
+<div ng-controller="OptionsCtrl">
+    <h1>{{title}}</h1>
+    <div>Operator is: {{option.snippet}}</div>
+    <select ng-model="option"
+            ng-change="setOption(option)"
+            ng-options="option.name for option in options"></select>
+</div>
+     
+@*<h1>You selected {{ options.selectedOption }}</h1>
     <input type="text" ng-model="yourName" placeholder="Enter a name here">
     <h1>Hello, {{ yourName }}!</h1>
-    <p>1 + 2 = {{ 1 + 2 }}</p>
+<p>1 + 2 = {{ 1 + 2 }}</p>*@
+
+
+<br />
+<br />
+<br />
+<br />
+
+<div ng-controller="SelectedOptionCtrl">
+    {{getOption().name}}
+</div>
+
+
+<div ng-controller="SelectedOptionCtrl">
+    <p>1 + {{ getOption().number}} = {{ getOption().number + 1}} </p>
+</div>
 

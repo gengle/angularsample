@@ -41,21 +41,35 @@ angular.module('app.controllers', [])
     ])
 
     // Path: /error/404
-    .controller('OptionsCtrl', function($scope) {
+    .controller('OptionsCtrl', function ($scope, HelloWorldFromService, SelectedOptionService) {
+        $scope.test = 'hello';
+        $scope.title = HelloWorldFromService.sayHello();
+        $scope.setOption = function(e) {
+            SelectedOptionService.setOption(e);
+        };
         $scope.options = [
             {
                 'name': 'Nexus S',
-                'snippet': 'Fast just got faster with Nexus S.'
+                'snippet': 'Fast just got faster with Nexus S.',
+                'number':1
             },
             {
                 'name': 'Motorola XOOM™ with Wi-Fi',
-                'snippet': 'The Next, Next Generation tablet.'
+                'snippet': 'The Next, Next Generation tablet.',
+                'number': 2
             },
             {
                 'name': 'MOTOROLA XOOM™',
-                'snippet': 'The Next, Next Generation tablet.'
+                'snippet': 'The Next, Next Generation tablet.',
+                'number': 3
             }
         ];
+    })
+
+    .controller('SelectedOptionCtrl', function ($scope, SelectedOptionService) {
+        $scope.getOption = function () {
+            return SelectedOptionService.getOption();
+        };
     })
         
 
